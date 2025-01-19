@@ -1,53 +1,652 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6dd5ed, #2193b0);
+  color: #333;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #b0b0b0;
+}
+
+/* =======================
+   Navbar Styles
+======================= */
+.navbar {
+  background-color: #282828;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  background-color: white;
+  height: 3px;
+  width: 25px;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+.menu-toggle:checked ~ .nav-links {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #282828;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  z-index: 999;
+}
+
+.nav-links a {
+  padding: 0.5rem 0;
+}
+
+.menu-toggle:checked + .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle:checked + .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle:checked + .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
   }
-  header {
-    text-align: center;
-    padding: 1rem;
-    background-color: #6200ea;
-    color: #fff;
-  }
-  main {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  #habit-form {
+
+  .hamburger {
     display: flex;
-    gap: 0.5rem;
   }
-  #habit-input {
-    flex: 1;
-    padding: 0.5rem;
+}
+
+/* =======================
+   Dark Mode Toggle
+======================= */
+#theme-toggle-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+}
+
+#theme-toggle {
+  display: none;
+}
+
+#theme-toggle + label {
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  background: #ddd;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-circle {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition: 0.3s ease;
+}
+
+#theme-toggle:checked + label {
+  background: #333;
+}
+
+#theme-toggle:checked + label .toggle-circle {
+  left: 60%;
+  background: #ffa500;
+}
+
+/* =======================
+   Calendar Section
+======================= */
+#calender {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 15px;
+  overflow: hidden;
+}
+
+.calendar-container {
+  max-width: 900px;
+  width: 100%;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #5ee7df, #b490ca);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  transform: translateY(-3px);
+}
+
+/* Weekday Headers */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  color: #777;
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-bottom: 2px solid #eee;
+}
+
+/* Calendar Grid */
+#calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.calendar-cell {
+  text-align: center;
+  padding: 15px;
+  background: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.calendar-cell:hover {
+  background: #ffedf0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.event-marker {
+  color: #e91e63;
+  font-weight: bold;
+}
+
+/* =======================
+   Modal Styling
+======================= */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#eventTitle,
+#eventDescription {
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.text-formatting .format-btn {
+  background-color: #f0f0f0;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text-formatting .format-btn:hover {
+  background-color: #e9e9e9;
+}
+
+
+
+/* =======================
+   Modal Buttons Styling
+======================= */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.save-btn, .delete-btn, .cancel-btn {
+  background-color: #4caf50; /* Green for Save */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 30%;
+}
+
+.save-btn:hover {
+  background-color: #398c3d;
+}
+
+.delete-btn {
+  background-color: #d75f5b; 
+}
+
+.delete-btn:hover {
+  background-color: #ab4643; 
+}
+
+.cancel-btn {
+  background-color: #a59999;
+}
+
+.cancel-btn:hover {
+  background-color: #887b7b;
+}
+
+
+/* =======================
+   Footer
+======================= */
+footer {
+  background: #282828;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  color: #007bff;
+}
+
+/* =======================
+   Modal Visibility Control
+======================= */
+.modal.hidden {
+  display: none; /* Keeps modal hidden */
+}
+
+.modal:not(.hidden) {
+  display: block; /* Ensures modal is visible when needed */
+}
+
+/* =======================
+   Responsive Styles
+======================= */
+@media (max-width: 768px) {
+  #calendarGrid {
+    gap: 10px;
   }
-  #add-habit {
-    background: #6200ea;
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
+
+  .calendar-cell {
+    padding: 12px;
   }
-  #habit-list {
-    margin-top: 1rem;
+
+  .calendar-header h2 {
+    font-size: 1.2rem;
   }
-  .habit {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background: #f9f9f9;
+
+  .nav-btn {
+    font-size: 0.9rem;
+    padding: 8px 15px;
   }
-  .habit.completed {
-    background: #d4edda;
-    border-color: #c3e6cb;
+}
+
+@media (max-width: 480px) {
+  .calendar-container {
+    padding: 15px;
   }
-  
+
+  #calendarGrid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+
+  .calendar-cell {
+    padding: 8px;
+  }
+
+  .calendar-header h2 {
+    font-size: 1rem;
+  }
+
+  .nav-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+
+
+/* =======================
+   Contact Section Styles
+======================= */
+
+.contact-section {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ff7eb3, #fdff92);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #f9f9f9;
+}
+
+/* Form Styling */
+.contact-form {
+  background: white;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form input, 
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: border-color 0.3s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+
+.contact-form textarea {
+  resize: none;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 1rem;
+}
+
+.btn-submit:hover {
+  background: linear-gradient(90deg, #0056b3, #0080c6);
+}
+
+/* Social Links Styling */
+.social-links {
+  margin-top: 2rem;
+}
+
+.social-links p {
+  margin-bottom: 1rem;
+  color: #f9f9f9;
+  font-size: 1rem;
+}
+
+.social-links a {
+  font-size: 1.5rem;
+  color: white;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ffd700;
+}
+
+/* =======================
+ Responsive Design for Contact Section
+======================= */
+@media (max-width: 768px) {
+  .contact-section {
+      padding: 3rem 1.5rem;
+  }
+
+  .contact-form {
+      padding: 1.5rem;
+  }
+
+  .btn-submit {
+      font-size: 0.9rem;
+  }
+}
+
+
+/* =======================
+  To-do-list
+======================= */
+
+#habit-form {
+  display: flex;
+  gap: 0.5rem;
+}
+#habit-input {
+  flex: 1;
+  padding: 0.5rem;
+}
+#add-habit {
+  background: #6200ea;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#habit-list {
+  margin-top: 1rem;
+}
+.habit {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+}
+.habit.completed {
+  background: #d4edda;
+  border-color: #c3e6cb;
+}
+
+/* =======================
+  Mind Map Section
+======================= */
+
+#mindmap {
+  margin-top: 50px;
+  text-align: center;
+  padding: 0 10px; 
+}
+
+#mindmapCanvas {
+  border: 2px solid #ddd;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 100%;
+  height: 400px;
+  background: white;
+  position: relative;
+  box-sizing: border-box;
+}
+
+
+
+@media (max-width: 768px) {
+  #mindmapCanvas {
+    height: 300px;
+  }
+
+  .node {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .node input {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  #mindmapCanvas {
+    height: 250px;
+  }
+
+  .node {
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  .node input {
+    width: 70px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #mindmapCanvas {
+    height: 500px;
+  }
+
+  .node {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .node input {
+    width: 120px;
+  }
+}
