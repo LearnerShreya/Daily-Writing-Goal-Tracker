@@ -56,7 +56,10 @@ body.dark-mode {
   color: #007bff;
 }
 
-/* Hamburger Menu */
+
+/* =======================
+  Hamburger Menu
+======================= */
 .menu-toggle {
   display: none;
 }
