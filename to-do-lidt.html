@@ -35,14 +35,16 @@
   </div>
 </header>
 
-<h1 style="text-align: center; margin-top: 1rem;">Habit Tracker</h1>
+<h1 style="text-align: center; margin-top: 1rem;">Your To-do List</h1>
+<p style="text-align: center; color: white; margin: 0;">Organize your writing tasks and deadlines.</p>
+
 <main>
   <section id="habit-form">
     <input type="text" id="habit-input" placeholder="Enter a habit" />
-    <button id="add-habit">Add Habit</button>
+    <button id="add-habit">Add Task</button>
   </section>
   <section id="habit-list">
-    <p id="empty-message">No habits yet! Add your first habit above.</p>
+    <p id="empty-message">No list yet! Add your first task above.</p>
   </section>
 </main>
 
@@ -59,5 +61,52 @@
   <p>© 2025 Developed with ❤️ by Shreya Singh.</p>
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const habitInput = document.getElementById("habit-input");
+  const addHabitButton = document.getElementById("add-habit");
+  const habitList = document.getElementById("habit-list");
+  const emptyMessage = document.getElementById("empty-message");
+
+  function toggleEmptyMessage() {
+    if (habitList.children.length === 1) {
+      emptyMessage.style.display = "block";
+    } else {
+      emptyMessage.style.display = "none";
+    }
+  }
+
+  function addHabit() {
+    const habitName = habitInput.value.trim();
+    if (habitName === "") return;
+
+    const habitElement = document.createElement("div");
+    habitElement.className = "habit";
+    habitElement.innerHTML = `
+      <span>${habitName}</span>
+      <div>
+        <button class="mark-complete">Complete</button>
+        <button class="delete-habit">Delete</button>
+      </div>
+    `;
+
+    habitElement.querySelector(".mark-complete").addEventListener("click", () => {
+      habitElement.classList.toggle("completed");
+    });
+
+    habitElement.querySelector(".delete-habit").addEventListener("click", () => {
+      habitElement.remove();
+      toggleEmptyMessage();
+    });
+
+    habitList.appendChild(habitElement);
+    habitInput.value = "";
+    toggleEmptyMessage();
+  }
+
+  addHabitButton.addEventListener("click", addHabit);
+  toggleEmptyMessage();
+});
+</script>
 </body>
 </html>
