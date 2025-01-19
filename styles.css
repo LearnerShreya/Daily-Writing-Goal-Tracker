@@ -573,7 +573,7 @@ footer a:hover {
 }
 
 #add-habit {
-  background: #6200ea;
+  background: linear-gradient(135deg, #5280cf, #7675b5);
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
@@ -649,7 +649,7 @@ footer a:hover {
 
 #empty-message {
   text-align: center;
-  color: #aaa;
+  color: white;
   font-size: 1.2rem;
   margin-top: 2rem;
 }
