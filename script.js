@@ -137,10 +137,23 @@ function closeModal() {
 cell.addEventListener('click', () => openModal(cell, eventKey));
 
 
+
+/* =======================
+  To do list
+======================= */
 document.addEventListener("DOMContentLoaded", () => {
   const habitInput = document.getElementById("habit-input");
   const addHabitButton = document.getElementById("add-habit");
   const habitList = document.getElementById("habit-list");
+  const emptyMessage = document.getElementById("empty-message");
+
+  function toggleEmptyMessage() {
+    if (habitList.children.length === 1) {
+      emptyMessage.style.display = "block";
+    } else {
+      emptyMessage.style.display = "none";
+    }
+  }
 
   function addHabit() {
     const habitName = habitInput.value.trim();
@@ -150,22 +163,33 @@ document.addEventListener("DOMContentLoaded", () => {
     habitElement.className = "habit";
     habitElement.innerHTML = `
       <span>${habitName}</span>
-      <button class="mark-complete">Complete</button>
+      <div>
+        <button class="mark-complete">Complete</button>
+        <button class="delete-habit">Delete</button>
+      </div>
     `;
 
     habitElement.querySelector(".mark-complete").addEventListener("click", () => {
       habitElement.classList.toggle("completed");
     });
 
+    habitElement.querySelector(".delete-habit").addEventListener("click", () => {
+      habitElement.remove();
+      toggleEmptyMessage();
+    });
+
     habitList.appendChild(habitElement);
     habitInput.value = "";
+    toggleEmptyMessage();
   }
 
   addHabitButton.addEventListener("click", addHabit);
+  toggleEmptyMessage();
 });
 
-
-
+/* =======================
+  Mind Map Section
+======================= */
 const canvas = document.getElementById('mindmapCanvas');
 let selectedNode = null;
 let connectingNode = null;
@@ -248,7 +272,7 @@ function drawConnection(node1, node2) {
 
 // Add nodes on double-click
 canvas.addEventListener('dblclick', (e) => {
-  const x = e.clientX - canvas.offsetLeft - 50; // Offset for center alignment
+  const x = e.clientX - canvas.offsetLeft - 50; 
   const y = e.clientY - canvas.offsetTop - 20;
   createNode(x, y);
 });

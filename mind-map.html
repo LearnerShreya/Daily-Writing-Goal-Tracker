@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Writing Goal Tracker</title>
+  <title>Mind Map</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -11,8 +11,7 @@
 
 <!-- Navbar Section -->
 <header class="navbar">
-  <div class="logo"> Daily Writing Goal Tracker
-  </div>
+  <div class="logo">Create Mind Map</div>
 
   <input type="checkbox" id="menu-toggle" class="menu-toggle" />
   <label for="menu-toggle" class="hamburger">
@@ -36,46 +35,12 @@
   </div>
 </header>
 
-<!-- Calendar Section -->
-<div id="calender">
-  <div class="calendar-container">
-    <div class="calendar-header">
-      <button id="prevMonth" class="nav-btn">◀ Previous</button>
-      <h2 id="currentMonthYear"></h2>
-      <button id="nextMonth" class="nav-btn">Next ▶</button>
-    </div>
-    <div class="weekdays">
-      <div>Sun</div>
-      <div>Mon</div>
-      <div>Tue</div>
-      <div>Wed</div>
-      <div>Thu</div>
-      <div>Fri</div>
-      <div>Sat</div>
-    </div>
-    <div class="calendar-grid" id="calendarGrid"></div>
-  </div>
-
-  <!-- Event Modal -->
-  <div id="eventModal" class="modal hidden">
-    <div class="modal-content">
-      <h3>Event Details</h3>
-      <input type="text" id="eventTitle" placeholder="Event Title">
-      <textarea id="eventDescription" placeholder="Event Description"></textarea>
-      <div class="text-formatting">
-        <button id="boldBtn" class="format-btn">Bold</button>
-        <button id="italicBtn" class="format-btn">Italic</button>
-        <button id="bulletBtn" class="format-btn">Bullet List</button>
-      </div>
-      <div class="modal-buttons">
-        <button id="saveEvent" class="save-btn">Save</button>
-        <button id="deleteEvent" class="delete-btn">Delete</button>
-        <button id="cancelEvent" class="cancel-btn">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<main>
+  <!-- Mind Map Section -->
+  <section id="mindmap">
+    <div id="mindmapCanvas"></div>
+  </section>
+</main>
 
 <!-- Footer Section -->
 <footer>
@@ -90,6 +55,7 @@
   <p>© 2024 Developed with ❤️ by Shreya Singh.</p>
 </footer>
 
-<script src="script.js"></script> <!-- Make sure this path is correct -->
+<script src="./script.js"></script>
+
 </body>
 </html>
