@@ -434,13 +434,19 @@ footer a:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+
 .contact-section h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   background: linear-gradient(90deg, #ff7eb3, #fdff92);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #ff7eb3;
 }
+
 
 .contact-section p {
   font-size: 1.2rem;
