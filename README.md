@@ -38,6 +38,8 @@ A simple section to get in touch or provide additional information related to th
 ### **Write and Track**  
 Dynamic calendar and content editor interface:  
 ![Write and Track Screenshot](https://github.com/user-attachments/assets/2beffde5-f348-4712-a6e6-9e2287afef7f)
+![image](https://github.com/user-attachments/assets/74c0c8df-6245-42e1-b6ce-a91217bdbde8)
+
 
 ---
 
