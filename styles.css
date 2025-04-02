@@ -442,9 +442,7 @@ footer a:hover {
   letter-spacing: 2px;
   background: linear-gradient(90deg, #ff7eb3, #fdff92);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #ff7eb3;
 }
 
 
