@@ -2,6 +2,7 @@
 
 A web-based application designed to help you track your writing goals, stay organized, and visualize your ideas effectively. This project includes multiple features such as a dynamic calendar, to-do list, and mind map to support your daily writing routine.
 
+- https://learnershreya.github.io/Daily-Writing-Goal-Tracker/
 ---
 
 ## **Features**
