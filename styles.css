@@ -251,7 +251,7 @@ body.dark-mode {
 }
 
 .calendar-cell:hover {
-  background: linear-gradient(135deg, #5ee7df, #b490ca);
+  background: linear-gradient(135deg, #cddedd, #c9bad3);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   color: transparent; /* Fades out original text */
 }
