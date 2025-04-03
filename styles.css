@@ -93,7 +93,6 @@ body.dark-mode {
 }
 
 
-
 /* =======================
   Hamburger Menu
 ======================= */
@@ -361,7 +360,6 @@ body.dark-mode {
 }
 
 
-
 /* =======================
    Modal Buttons Styling
 ======================= */
@@ -481,8 +479,6 @@ footer a:hover {
   }
 }
 
-
-
 /* =======================
    Contact Section Styles
 ======================= */
@@ -494,7 +490,6 @@ footer a:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-
 .contact-section h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -505,7 +500,6 @@ footer a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 .contact-section p {
   font-size: 1.2rem;
@@ -613,7 +607,6 @@ footer a:hover {
       font-size: 0.9rem;
   }
 }
-
 
 /* =======================
   To-do-list
@@ -766,7 +759,6 @@ footer a:hover {
     padding: 0.2rem 0.5rem;
   }
 }
-
 
 /* =======================
   Mind Map Section
