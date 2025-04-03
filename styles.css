@@ -464,6 +464,7 @@ footer a:hover {
   text-transform: uppercase;
   letter-spacing: 2px;
   background: linear-gradient(90deg, #ff7eb3, #fdff92);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
