@@ -26,13 +26,16 @@ function createNode(x, y, text = 'Node') {
   node.style.left = `${x}px`;
   node.style.top = `${y}px`;
 
+
   // Create an input field inside the node for text
   const input = document.createElement('input');
   input.value = text;
 
+
   // Prevent input clicks from triggering node movement
   input.addEventListener('click', (e) => e.stopPropagation());
   node.appendChild(input);
+
 
   // Enable dragging and connection functionalities
   node.addEventListener('mousedown', (e) => startDrag(e, node));
@@ -51,6 +54,7 @@ function createNode(x, y, text = 'Node') {
  * @param {MouseEvent} event - The mouse event.
  * @param {HTMLElement} node - The node being dragged.
  */
+
 function startDrag(event, node) {
   selectedNode = node;
   const offsetX = event.clientX - node.offsetLeft;
@@ -82,12 +86,14 @@ function startDrag(event, node) {
  * Starts or completes a connection between two nodes.
  * @param {HTMLElement} node - The selected node.
  */
+
 function startConnection(node) {
   if (!connectingNode) {
     // First node selected, highlight it
     connectingNode = node;
     node.style.border = '2px solid yellow';
   } else {
+
     // Second node selected, draw connection
     drawConnection(connectingNode, node);
     connectingNode.style.border = ''; // Remove highlight
@@ -101,6 +107,7 @@ function startConnection(node) {
  * @param {HTMLElement} node1 - The first node.
  * @param {HTMLElement} node2 - The second node.
  */
+
 function drawConnection(node1, node2) {
   const line = document.createElement('canvas');
   line.style.position = 'absolute';
@@ -138,6 +145,7 @@ function drawConnection(node1, node2) {
 /**
  * Adds a new node at the clicked position.
 */
+
 canvas.addEventListener('dblclick', (e) => {
   const x = e.clientX - canvas.offsetLeft - 50; 
   const y = e.clientY - canvas.offsetTop - 20;
