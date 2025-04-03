@@ -38,7 +38,6 @@ body.dark-mode {
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  font-family: "Poppins", sans-serif;
   color:  rgb(36, 30, 30);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -69,7 +68,6 @@ body.dark-mode {
   font-weight: 600;
   padding: 8px 12px;
   position: relative;
-  transition: all 0.3s ease-in-out;
 }
 
 .nav-links a::after {
