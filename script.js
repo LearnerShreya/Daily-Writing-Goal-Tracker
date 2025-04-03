@@ -169,3 +169,27 @@ function closeModal() {
 }
 // Open the modal when clicking on a day
 cell.addEventListener('click', () => openModal(cell, eventKey));
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  // Check localStorage for saved theme
+  if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark-mode");
+      themeToggle.checked = true;
+  }
+
+  // Toggle Dark Mode when switch is clicked
+  themeToggle.addEventListener("change", function () {
+      if (this.checked) {
+          body.classList.add("dark-mode");
+          localStorage.setItem("theme", "dark");
+      } else {
+          body.classList.remove("dark-mode");
+          localStorage.setItem("theme", "light");
+      }
+  });
+});
