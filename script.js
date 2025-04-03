@@ -159,13 +159,13 @@ cancelEvent.addEventListener('click', closeModal);
 renderCalendar(currentMonth, currentYear);
 
 
-// cell.addEventListener('click', () => {
-//   openModal(cell, eventKey);  // Open the modal when the day is clicked
-// });
+cell.addEventListener('click', () => {
+  openModal(cell, eventKey);  // Open the modal when the day is clicked
+});
 
-// // Close the Event Modal
-// function closeModal() {
-//   eventModal.classList.add('hidden');
-// }
-// // Open the modal when clicking on a day
-// cell.addEventListener('click', () => openModal(cell, eventKey));
+// Close the Event Modal
+function closeModal() {
+  eventModal.classList.add('hidden');
+}
+// Open the modal when clicking on a day
+cell.addEventListener('click', () => openModal(cell, eventKey));
