@@ -172,24 +172,33 @@ cell.addEventListener('click', () => openModal(cell, eventKey));
 
 
 
+
+/* =======================
+   Dark Mode Toggle Script
+======================= */
+
 document.addEventListener("DOMContentLoaded", function () {
   const themeToggle = document.getElementById("theme-toggle");
   const body = document.body;
 
-  // Check localStorage for saved theme
+  /* =======================
+     Check Saved Theme Preference
+  ======================= */
   if (localStorage.getItem("theme") === "dark") {
-      body.classList.add("dark-mode");
-      themeToggle.checked = true;
+      body.classList.add("dark-mode"); // Apply dark mode styles
+      themeToggle.checked = true; // Keep the toggle switch checked
   }
 
-  // Toggle Dark Mode when switch is clicked
+  /* =======================
+     Toggle Dark Mode on Switch Click
+  ======================= */
   themeToggle.addEventListener("change", function () {
       if (this.checked) {
-          body.classList.add("dark-mode");
-          localStorage.setItem("theme", "dark");
+          body.classList.add("dark-mode"); // Enable dark mode
+          localStorage.setItem("theme", "dark"); // Save user preference
       } else {
-          body.classList.remove("dark-mode");
-          localStorage.setItem("theme", "light");
+          body.classList.remove("dark-mode"); // Disable dark mode
+          localStorage.setItem("theme", "light"); // Save user preference
       }
   });
 });
